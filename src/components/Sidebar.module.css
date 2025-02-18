@@ -1,0 +1,204 @@
+/* Container to hold both sidebar and main content */
+.sidebarContainer {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Main content styling */
+.mainContent {
+  flex-grow: 1;
+  background-color: #fffcfc;
+  padding: 20px;
+  transition: margin-left 0.3s;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80px; /* Default width for partially open state */
+  height: 100%;
+  background-color:#15092D;
+  color: aquamarine;
+  transition: width 0.3s;
+  padding-top: 20px;
+  overflow: hidden;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  z-index: 1000;
+}
+
+/* Full-width sidebar when open */
+.sidebar.open {
+  width: 250px;
+}
+
+/* Partially open sidebar width */
+.sidebar.partial {
+  width: 80px;
+}
+
+/* Logo image styling */
+.logoImage {
+  width: 50px; /* Default size */
+  height: auto;
+  margin-bottom: 30px;
+  transition: width 0.3s, margin-bottom 0.3s;
+}
+
+/* Enlarge logo when sidebar is open */
+.sidebar.open .logoImage {
+  width: 100px; /* Enlarged size when sidebar is open */
+  margin-bottom: 50px; /* Adjust margin to fit enlarged logo */
+}
+
+/* Logo styling when sidebar is in partial state */
+.sidebar.partial .logoImage {
+  width: 50px; /* Default size when sidebar is closed */
+}
+
+.toggleIcon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+/* Sidebar items */
+.sidebarItems {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebarItem {
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.sidebarItem:hover {
+  background-color:#66646a;
+}
+
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Dropdown styling */
+.dropdown {
+  list-style-type: none;
+  padding-left: 20px;
+  margin-top: 10px;
+  background-color: #beb3d2;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  display: none; /* Hide dropdown in partial state */
+}
+
+.dropdownItem {
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dropdownItem:hover {
+  background-color: #575757;
+}
+
+/* Add spacing when the dropdown is open */
+.sidebarItem.mouOpen {
+  margin-bottom: 140px;
+}
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* Responsive Design */
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (max-width: 1024px) {
+  .sidebar.open {
+    width: 200px; /* Slightly smaller width on tablets */
+  }
+
+  .logoImage {
+    width: 40px;
+  }
+
+  .toggleIcon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Small devices (phones, 480px and up) */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 60px; /* Minimal width for phones */
+  }
+
+  .sidebar.open {
+    width: 180px; /* Smaller width when fully open on phones */
+  }
+
+  .logoImage {
+    width: 35px;
+  }
+
+  .toggleIcon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Extra small devices (phones, less than 480px) */
+@media screen and (max-width: 480px) {
+  .sidebar {
+    width: 0; /* Completely hidden by default on very small screens */
+  }
+
+  .sidebar.open {
+    width: 100%; /* Full-width overlay for small screens */
+    position: fixed;
+    height: 100%;
+    z-index: 9999;
+  }
+
+  .toggleIcon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .sidebarItem {
+    justify-content: center;
+    padding: 15px;
+  }
+
+  /* Logo hidden on very small screens */
+  .logo {
+    display: none;
+  }
+}

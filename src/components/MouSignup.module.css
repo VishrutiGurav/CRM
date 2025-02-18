@@ -1,0 +1,203 @@
+/* General page container */
+.signupContainer {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Navbar stays at the top */
+.header {
+  background-color: #15092d;
+  display: flex;
+  width: 98%;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 15px 25px;
+  position: fixed; /* Fix the navbar at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Ensures the navbar stays on top of other content */
+}
+
+.userName {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 80%; 
+  color: #3fd79e;/* Adjust spacing as needed */
+}
+
+.profileIcon {
+  width: 40px; /* Adjust size */
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.iconImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logo {
+  width: 117px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 0 18px 0 0;
+  max-width: 100%;
+}
+
+.menuIcon {
+  width: 48px;
+  object-fit: contain;
+  object-position: center;
+  align-self: start;
+}
+
+
+.logoutCard {
+  position: absolute; /* Position it above other elements */
+  top: 60px; /* Adjust based on your header height */
+  right: 10px; /* Adjust for positioning */
+  background-color: white; /* Background color */
+  border: 1px solid #ccc; /* Border style */
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px; /* Inner spacing */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Shadow for effect */
+  z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.logoutButton {
+  background-color:#3fd79e; /* Logout button color */
+  color: white; /* Text color */
+  border: none; /* No border */
+  padding: 8px 12px; /* Inner spacing */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor */
+}
+
+
+/* The content box (sign-up card) */
+.signupCard {
+  border-radius: 30px;
+  background-color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+  padding: 40px 1px;
+  margin-top: 160px; /* Adds space between navbar and content box */
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+}
+
+/* Text styling */
+.title {
+  font: 600 48px Inter, sans-serif;
+  color: #000;
+  margin: 0 35px 0 27px;
+}
+
+.learnMore {
+  font: 600 20px Inter, sans-serif;
+  color: #3fd79e;
+  margin-top: 29px;
+}
+
+.aboutText {
+  font-weight: 400;
+  color: #ababab;
+}
+
+.stepsContainer {
+  margin-top: 97px;
+  width: 100%;
+}
+
+.stepsGrid {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.stepColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 33%;
+}
+
+.stepsDescription {
+  font: 400 20px Inter, sans-serif;
+  color: #000;
+  margin-top: 71px;
+}
+
+.ctaButton {
+  background-color: #15092d;
+  color: #fff;
+  font: 600 32px Inter, sans-serif;
+  padding: 22px 56px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 92px;
+}
+
+@media (max-width: 991px) {
+  .signupCard {
+    padding: 40px;
+    margin-top: 120px; /* Reduced space on smaller screens */
+  }
+
+  .stepsContainer {
+    margin-top: 40px;
+  }
+
+  .stepsGrid {
+    flex-direction: column;
+  }
+
+  .ctaButton {
+    margin-top: 40px;
+    padding: 16px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .signupCard {
+    margin-top: 100px;
+    padding: 20px;
+  }
+
+  .stepsContainer {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .signupCard {
+    margin-top: 80px;
+    padding: 20px;
+  }
+
+  .stepsContainer {
+    margin-top: 20px;
+  }
+
+  .ctaButton {
+    margin-top: 30px;
+  }
+}

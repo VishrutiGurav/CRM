@@ -1,0 +1,348 @@
+/* FillDetails.css */
+
+/* General Styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .fill-details-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+  
+  /* Navbar Styling */
+  .navbar {
+    width: 100%;
+    background-color:#15092D;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-logo {
+    height: 40px;
+    margin-left: 30px;
+  }
+  
+  .navbar-user {
+    display: flex;
+    align-items: center;
+    margin-left: 1540px;
+  }
+  
+  .profile-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #004085;
+    margin-right: 5px;
+    font-size: 14px;
+  }
+  
+  .user-name {
+    font-size: 16px;
+    color: #40DA9E;
+  }
+  
+  /* Content Styling */
+  .content {
+    width: 90%;
+    max-width: 1500px;
+    margin: 20px auto;
+    background-color: white;
+  }
+  
+  .main-heading {
+    text-align: left;
+    font-size: 39px;
+    margin-bottom: 20px;
+  }
+  
+  /* Step Indicator */
+  .step-indicator {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .step1{
+        width: 250px;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        font-size: 19px;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color:#40DA9E;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 20px;
+  }
+
+  .circle1 {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color:grey;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+    font-weight: bold;
+    margin-right: 20px;
+  }
+  
+  
+  .step p {
+        margin-left:180px;
+        margin-top: -40px;
+        font-size: 19px;
+  }
+
+  .dotted-line {
+    border-top: 2px dotted grey; /* Creates a horizontal dotted line */
+    width: 20%;/* Full width of the container */
+    position: relative;
+    left: 45px;
+    margin-top: 30px; /* Aligns the line to the center */
+    margin-right: auto;/* Add spacing above and below the line */
+    
+  }
+  
+  
+  .form-box {
+    max-width: 900%;
+    height: 300%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ced4da;
+     border-radius: 8px;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+     
+  }
+  
+  .form-heading {
+    text-align: left;
+    font-size: 34px;
+    margin-bottom: 20px;
+  }
+  
+  .form-container {
+    margin-top: 2.5%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-column {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align label to the left */
+    margin-bottom: 20px; /* Add some space between fields */
+  }
+  
+  .form-input {
+    padding: 100px;
+    margin-top: 5px;
+    border: 4px solid #f4f0f0;
+    border-radius: 5px;
+    width: 10%;
+  }
+  
+  label {
+    margin: 0; /* Remove default margin */
+    padding: 0;
+    font-size: 18px; /* Optional: Adjust label font size */
+     /* Optional: Adjust label text color */
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid #717774;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .verify-button {
+    background-color: #a4cffc;
+    color: white;
+    border:#0056b3;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .verify-button:hover {
+    background-color: #0056b3;
+  }
+  .verify-button.verified {
+    background-color: green; /* Change background color when verified */
+  }
+
+  .form-input:focus {
+    border-color: #40DA9E;
+  }
+  .form-button {
+    padding: 10px;
+    background-color: #40DA9E; /* Green color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 30%;
+    height: 70%;
+    margin-top: 4.5%;
+    margin-left: 70%;
+  }
+  
+  .form-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  .error {
+    border: 1px solid red;
+  }
+
+  .otp-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .otp-modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+  }
+  
+  .timer {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: red;
+  }
+  
+  .otp-input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  .otp-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+  
+  .submit-otp, .resend-otp, .close-modal {
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .submit-otp {
+    background-color: green;
+    color: white;
+  }
+  
+  .resend-otp {
+    background-color: blue;
+    color: white;
+  }
+  
+  .resend-otp:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+  }
+  
+  .close-modal {
+    background-color: red;
+    color: white;
+    margin-top: 10px;
+  }
+  
+  
+  
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    .step-indicator {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .step {
+      margin-bottom: 15px;
+    }
+  
+    .form-box {
+      width: 100%;
+    }
+    .form-container {
+        grid-template-columns: 1fr; /* Stack the columns on small screens */
+      }
+      .form-button {
+        width: auto; /* Button should not stretch across the whole form */
+      }
+  }
+  

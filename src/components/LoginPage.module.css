@@ -1,0 +1,204 @@
+/* LoginPage.module.css */
+
+.loginContainer {
+  display: flex;
+  flex-direction: column; 
+  height: 100vh;
+  background-color: #15092D;
+}
+
+.contentWrapper {
+  display: flex;
+  flex: 1;
+}
+
+.leftColumn {
+  flex: 1;
+  background-color: #15092D; 
+  color: #40DA9E;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top */
+  padding: 20px;
+}
+
+.logoWrapper {
+  margin-bottom: 20px; /* Space below the logo */
+}
+
+.logo {
+  max-width: 40%; /* Make logo responsive */
+  height: auto; 
+  margin-left: -70%; /* Adjust as needed */
+}
+
+.welcomeSection {
+  margin-top: 12%; /* Adjust to position welcome section lower */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Align content to the left */
+}
+
+.welcomeHeading {
+  font-size: 2.5rem; /* Responsive font size */
+  margin: 0;
+}
+
+.welcomeMessage {
+  font-size: 1.2rem; /* Responsive font size */
+}
+
+.loginButton {
+  margin-top: 15px;
+  padding: 10px 40px;
+  background-color: #15092D;
+  color: #40DA9E; /* Button color matching logo */
+  border: 2px solid #40DA9E; /* Updated border style */
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.rightColumn {
+  flex: 1;
+  background-color: white;
+  border-top-left-radius: 30px; /* Rounded corners */
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 30px; /* Rounded corners */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.loginForm {
+  width: 100%;
+  max-width: 400px; /* Limit form width */
+  display: flex;
+  flex-direction: column;
+}
+
+.loginHeading {
+  font-size: 2.5rem; /* Responsive font size */
+  margin-bottom: 60px;
+}
+
+.radioGroup {
+  margin: 1rem 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.radioGroup label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+
+
+/* Container for the input field and floating label */
+.inputField {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* Input field styling */
+.inputLabel {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: transparent;
+  color: #000;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.floatingLabel {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  font-size: 0.1rem;
+  color: #888;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+.fieldHeading{
+  margin-bottom: 1px; 
+  margin-left: 0;
+  margin-top: 1px; 
+  font-size: 1.2rem;
+  color: #15092D; 
+  text-align: left; 
+ 
+}
+
+
+.inputLabel:focus ~ .floatingLabel,
+.inputLabel:not(:placeholder-shown):valid ~ .floatingLabel {
+  top: -10px;
+  font-size: 0.75rem;
+  color: #40DA9E;
+}
+
+
+.inputLabel:focus {
+  border-color: #40DA9E;
+  border-width: 2px;
+}
+
+
+.forgotPassword {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.875rem;
+  color: #888;
+  text-align: right;
+}
+
+.submitButton {
+  padding: 10px;
+  background-color: #15092D;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.signUpPrompt {
+  margin-top: 10px;
+}
+
+.signUpLink {
+  color: #40DA9E;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .floatingLabel {
+    font-size: 0.875rem;
+  }
+
+  .inputLabel {
+    font-size: 0.875rem;
+  }
+
+  .contentWrapper {
+    flex-direction: column; /* Stack columns on small screens */
+  }
+  
+  .leftColumn, .rightColumn {
+    width: 100%; /* Full width on smaller screens */
+  }
+
+  .welcomeHeading {
+    font-size: 1.5rem; /* Smaller font size on mobile */
+  }
+
+  .welcomeMessage {
+    font-size: 0.875rem; /* Smaller font size on mobile */
+  }
+}

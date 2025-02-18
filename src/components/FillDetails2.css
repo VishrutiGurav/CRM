@@ -1,0 +1,258 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .fill-details-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+  
+  /* Navbar Styling */
+  .navbar {
+    width: 100%;
+    background-color:#15092D;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-logo {
+    height: 40px;
+    margin-left: 30px;
+  }
+  
+  .navbar-user {
+    display: flex;
+    align-items: center;
+    margin-left: 1540px;
+  }
+  
+  .profile-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #004085;
+    margin-right: 5px;
+    font-size: 14px;
+  }
+  
+  .user-name {
+    font-size: 16px;
+    color: #40DA9E;
+  }
+  
+  /* Content Styling */
+  .content {
+    width: 90%;
+    max-width: 1500px;
+    margin: 20px auto;
+    background-color: white;
+  }
+  
+  .main-heading {
+    text-align: left;
+    font-size: 39px;
+    margin-bottom: 20px;
+  }
+  
+  /* Step Indicator */
+  .step-indicator {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 4%;
+  }
+  
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items:start;
+  }
+
+  .tick-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    background: none; /* Ensures no background is applied */
+    filter: none; 
+}
+
+
+  .step1{
+        width: 250px;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        font-size: 19px;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  }
+  
+  .circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 20px;
+    background-color:#40DA9E;
+    
+  }
+
+  .circle1 {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color:grey;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+    font-weight: bold;
+    margin-right: 20px;
+  }
+  
+  
+  .step p {
+        margin-left:80px;
+        margin-top: -40px;
+        font-size: 19px;
+  }
+
+  .dotted-line {
+    border-top: 2px dotted grey; /* Creates a horizontal dotted line */
+    width: 20%;/* Full width of the container */
+    position: relative;
+    left: 45px;
+    margin-top: 30px; /* Aligns the line to the center */
+    margin-right: auto;/* Add spacing above and below the line */
+    
+  }
+  
+  
+  .form-box {
+    max-width: 900%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    margin-top: 2%;
+  }
+  
+
+  .form-heading {
+    text-align: left;
+    font-size: 34px;
+    margin-bottom: 20px;
+  }
+
+  /* Form Container */
+.form-container {
+    margin-top: 2.5%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Form Row */
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+   
+  }
+  
+  /* Form Group */
+  .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+  }
+  
+  .form-group label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    
+  }
+  
+  /* Input Fields */
+  .input-field {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .input-field:focus {
+    border-color: #40DA9E;
+  }
+  
+  .input-field.small {
+    width: 90%;
+    flex: 0.4; /* Smaller width */
+  }
+  
+  .input-field.large {
+    width: 90%;
+    flex: 1; /* Larger width */
+  }
+  .form-button {
+    padding: 10px;
+    background-color: #40DA9E; /* Green color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 10%;
+    height: 90%;
+    margin-top: 4.5%;
+    margin-left: 70%;
+  }
+  
+  
+
+
+  @media (max-width: 768px) {
+    .step-indicator {
+        flex-direction: column;
+        align-items: center;
+      }
+    
+      .step {
+        margin-bottom: 15px;
+      }
+    
+      .form-box {
+        width: 100%;
+      }
+    }

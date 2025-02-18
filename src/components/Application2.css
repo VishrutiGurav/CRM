@@ -1,0 +1,345 @@
+
+/* Application.css 
+
+/* Styles for the content */
+.content {
+  padding: 14px;
+  transition: margin-left 0.3s ease, width 0.3s ease; /* Smooth transitions */
+}
+
+.content-full {
+  margin-left: 80px; /* Align with partial sidebar width */
+  width: calc(100% - 60px); /* Remaining width when sidebar is closed */
+}
+
+.content-shifted {
+  margin-left: 200px; /* Align with full sidebar width */
+  width: calc(100% - 250px); 
+  background-color: rgb(196, 194, 194); /* Remaining width when sidebar is open */
+}
+
+/* For the test box, to visually see the effect */
+.test-box {
+  background-color: lightgray;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 5px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.scrollable-container {
+  overflow: auto;
+  height: 900px; /* Adjust height as needed */
+  width: 100%; 
+  padding-right: 45px;
+}
+
+.content-wrapper {
+  padding: 2px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  margin-top: 0;
+  text-align: left;
+  margin-right: 10px;
+  flex-basis: 50%; /* Allow h1 to occupy half the space */
+}
+
+.user-profile {
+  text-align: center;
+  margin-right: 10px; /* Reduced right margin for better responsiveness */
+  font-weight: 800;
+  margin-bottom: 2.5%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1d014d;
+  font-size: 14px;
+}
+
+.usernametxt {
+  font-size: 20px;
+}
+
+.date-dropdown {
+  margin-left: 1%;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: #6de0b4;
+}
+
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 28px;
+  position: relative;
+  flex-grow: 1; /* Allow search bar to take up remaining space */
+}
+
+.search-bar {
+  border-radius: 50px;
+  width: 80%;
+  margin-right: 10px;
+  border-color: #40DA9E;
+  padding: 10px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 75%; /* Adjust the position of the icon */
+  top: 50%; /* Centers the icon vertically */
+  transform: translateY(-50%); /* Ensures the icon is centered vertically */
+  width: 22px; /* Adjust icon size */
+}
+
+.hr {
+  border-top-width: 100px;
+  border: 1px solid #6a6868;
+  margin: 20px 0;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.card {
+  background-color: #b8f8e06c;
+  border: 1px solid #b8f8e06c;
+  border-radius: 15px;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  text-align: center;
+  flex-basis: calc(20% - 20px);
+  margin: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+
+}
+
+.but {
+  background: linear-gradient(145deg, #40DA9E, #28C28C); /* Gradient from mint green to darker green */
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.but:hover {
+  background: linear-gradient(145deg, #28C28C, #40DA9E); /* Reverse gradient on hover */
+  transform: translateY(-3px); /* Slight lift on hover */
+  box-shadow: 2px 8px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+}
+
+.but:focus {
+  outline: none; /* Removes outline on focus */
+}
+
+.card-title {
+  color: #1d014d;
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.style {
+  display: flex;
+  align-items: center;
+  gap: '100px';
+}
+
+.count {
+  font-size: 18px;
+  font-weight: bold;
+  background-color: white; /* A bright contrasting color for count */
+  padding: 5px 10px;
+  border-radius: 12px;
+  color: rgb(2, 2, 2);
+}
+
+.circle {
+  background-color: #087b79;
+}
+
+/* Table Container */
+.table-container {
+  height: auto;
+  min-height: 100px; /* Optional: You can set a minimum height */
+  overflow: visible; /* Ensure the table is not clipped */
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9; /* Light background to contrast the table */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for the container */
+  border: 1px solid #ddd;
+}
+
+/* Table Styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Table Header Styling */
+th {
+  background-color: #2a9d8f; /* Attractive color for header */
+  color: white;
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  text-align: left;
+}
+
+/* Row Styling */
+tr:nth-child(even) {
+  background-color: #f4f4f4; /* Alternating row colors for better readability */
+}
+
+tr:hover {
+  background-color: #e1f7f4; /* Light highlight on row hover */
+}
+
+.action-button, .status-button {
+  padding: 8px 15px;
+  font-size: 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Status Button */
+.status-button {
+  background-color: #ffcc00; /* Yellow for status */
+}
+
+.status-button:hover {
+  background-color: #e5b900;
+}
+
+/* Action Button */
+.action-button {
+  background-color: #4CAF50; /* Green for action */
+}
+
+.action-button:hover {
+  background-color: #45a049;
+}
+
+/* Application Button */
+.application-button {
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .table-container {
+    padding: 15px;
+  }
+
+  th, td {
+    padding: 10px 12px;
+  }
+
+  .table {
+    width: 100%;
+  }
+
+  .status-button,
+  .action-button,
+  .application-button {
+    font-size: 12px; /* Smaller button size on smaller screens */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .table-container {
+    padding: 10px;
+  }
+
+  th, td {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  .status-button,
+  .action-button,
+  .application-button {
+    padding: 6px 10px;
+  }
+
+  .table {
+    width: 100%;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .table-container {
+    padding: 10px;
+  }
+
+  th, td {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .status-button,
+  .action-button,
+  .application-button {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+
+  .table {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+  }
+}

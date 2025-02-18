@@ -1,0 +1,103 @@
+/* Layout.css */
+.layout-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80px; /* Default width for partially open state */
+  height: 100%;
+  background-color: #15092D;
+  color: aquamarine;
+  transition: width 0.3s ease;
+  padding-top: 20px;
+  overflow: hidden;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  z-index: 1000;
+}
+
+.sidebar.open {
+  width: 250px; /* Sidebar full width when open */
+}
+
+.sidebar.partial {
+  width: 80px; /* Sidebar partially open */
+}
+
+.mainContent {
+  flex-grow: 1;
+  background-color: #fffcfc;
+  padding: 20px;
+  transition: margin-left 0.3s ease; /* Smooth transition for content */
+}
+
+.mainContent.shifted {
+  margin-left: 250px; /* Shift content when sidebar is open */
+}
+
+/* Sidebar styling for logo and items */
+.sidebarItems {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebarItem {
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.sidebarItem:hover {
+  background-color: #66646a;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Adjustments for small devices (Responsive Design) */
+@media screen and (max-width: 1024px) {
+  .sidebar.open {
+    width: 200px;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 60px;
+  }
+
+  .sidebar.open {
+    width: 180px;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sidebar {
+    width: 0;
+  }
+
+  .sidebar.open {
+    width: 100%;
+  }
+}

@@ -1,0 +1,70 @@
+.success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f8f8;
+  }
+  
+  .success-box {
+    text-align: center;
+    background: #fff;
+    border-radius: 10px;
+    padding: 50px 60px; /* Increased padding for a larger box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly larger shadow for emphasis */
+    max-width: 600px; /* Increased width */
+  }
+  
+  .success-box h1 {
+    font-size: 28px; /* Larger heading */
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 30px;
+  }
+  
+  .success-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px; /* Increased size */
+    height: 80px; /* Increased size */
+    margin: 0 auto 30px; /* More spacing below the icon */
+    border-radius: 50%;
+    background-color: #34c759;
+  }
+  
+  .check-icon {
+    width: 40px; /* Increased icon size */
+    height: 40px;
+    color: white;
+  }
+  
+  .success-box p {
+    font-size: 18px; /* Larger font for the message */
+    color: #555;
+    margin-top: 20px;
+  }
+
+  .dashboard-button {
+    background-color: #40DA9E;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .dashboard-button:hover {
+    background-color: #36C48B;
+    transform: scale(1.05);
+  }
+  
+  .dashboard-button:active {
+    transform: scale(0.95);
+  }
+  
+  

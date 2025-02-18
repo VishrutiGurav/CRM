@@ -1,0 +1,30 @@
+.sidebarItem {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  gap: 15px;
+  white-space: nowrap;
+  margin-bottom: 34px;
+}
+
+.icon {
+  aspect-ratio: 1;
+  object-fit: contain;
+  width: 48px;
+}
+
+.label {
+  flex-grow: 1;
+}
+
+.additionalIcon {
+  aspect-ratio: 1.19;
+  object-fit: contain;
+  width: 38px;
+}
+
+@media (max-width: 991px) {
+  .sidebarItem {
+    white-space: normal;
+  }
+}
