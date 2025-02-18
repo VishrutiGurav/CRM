@@ -47,7 +47,7 @@ const LoginPage = () => {
         localStorage.setItem('token', jwtToken);
         localStorage.setItem('loggedInUser', `${firstName} ${lastName}`);
         setTimeout(() => {
-          navigate(userType === 'client' ? '/mou-signup' : '/Sidebar');
+          navigate(userType === 'client' ? '/mou-signup' : '/admindashboard');
         }, 1000);
       } else if (error) {
         handleError(error.details[0].message);

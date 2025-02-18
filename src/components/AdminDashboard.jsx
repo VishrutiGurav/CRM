@@ -3,6 +3,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recha
 import { RadialBarChart, RadialBar } from "recharts";
 import { FaHourglassHalf, FaCheckCircle, FaTimesCircle, FaPauseCircle } from "react-icons/fa";
 import "./AdminDashboard.css";
+import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import axios from "axios"; // Import Axios for API calls
 
@@ -21,6 +22,11 @@ const mouData = [
 ];
 
 const Dashboard = () => {
+  const navigate = useNavigate(); // Initialize navigation
+
+const handleReviewClick1 = () => {
+  navigate("/Review"); // Replace with your actual route
+};
   const [newRequest, setNewRequest] = useState(false); // State for red dot blinking
   const [totalRequests, setTotalRequests] = useState(0); // Stores the client count
 
@@ -87,10 +93,11 @@ const Dashboard = () => {
             {newRequest && <span className="red-dot blinking"></span>} {/* Blinking red dot */}
             <span>New Request Alert</span>
           </div>
-          <button className="review-btn" onClick={handleReviewClick}>
-            {newRequest && <span className="red-short"></span>} {/* Red indicator on button */}
-            Review Requests
-          </button>
+          <button className="review-btn" onClick={handleReviewClick1}>
+  {newRequest && <span className="red-short"></span>} {/* Red indicator */}
+  Review Requests
+</button>
+
         </div>
         </div>
 

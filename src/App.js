@@ -11,6 +11,8 @@ import FillDetails2 from "./components/FillDetails2";
 import FillDetails3 from "./components/FillDetails3";
 import SuccessPage from "./components/SuccessPage";
 import AdminDashboard from "./components/AdminDashboard";
+import ClientDashboard from "./components/ClientDashboard";
+import Review from "./components/Review";
 
 
 
@@ -28,7 +30,9 @@ function App() {
               <Route path="/Application2" element={<Application2/>} />
               <Route path="/filldetails3" element={<FillDetails3/>} />
               <Route path="/Success" element={<SuccessPage/>} />
-              <Route path="/admindashboard" element={<AdminDashboard/>} />
+              <Route path="/admindashboard" element={<AdminDashboard/>}/>
+              <Route path="/ClientDashboard" element={<ClientDashboard/>} />
+              <Route path="/Review" element={<Review/>} />
               {/*<Route element={<Layout isOpen={isOpen} setIsOpen={setIsOpen} />}>*/}
           </Routes>
         </Router>

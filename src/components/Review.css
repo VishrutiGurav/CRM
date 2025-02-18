@@ -1,0 +1,501 @@
+/* Base Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+/* Styles for the content */
+.content {
+  padding: 14px;
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+.content-full {
+  margin-left: 80px;
+  width: calc(100% - 60px);
+}
+
+.content-shifted {
+  margin-left: 200px;
+  width: calc(100% - 250px);
+  background-color: #e0e0e0;
+}
+
+/* Visual test box */
+.test-box {
+  background-color: #d3d3d3;
+  padding: 12px;
+  margin-top: 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Scrollable container */
+.scrollable-container {
+  overflow: auto;
+  height: 900px;
+  width: 100%;
+  padding-right: 45px;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+  padding: 10px;
+}
+
+/* Header section */
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  text-align: left;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+
+.modal {
+  position: fixed; /* Make the modal fixed relative to the viewport */
+  z-index: 1; /* Sit on top */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* Center the modal */
+  width: 40%;
+  height: 40%;
+  background-color: #a5ffe3;
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Optional for a shadow effect */
+  border-radius: 8px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 8px;
+  margin: 0; /* No need for margin, as flexbox will handle centering */
+}
+.confirm-button {
+  background-color: #28a745; /* Green color for confirm */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-button:hover {
+  background-color: #218838; /* Darker shade of green on hover */
+}
+
+.cancel-button {
+  background-color: #dc3545; /* Red color for cancel */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin-left: 10px; /* Add some spacing between buttons */
+}
+
+.cancel-button:hover {
+  background-color: #c82333; /* Darker shade of red on hover */
+}
+
+#reject-reason {
+  width: 100%; /* Full width of the container */
+  padding: 10px;
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none; /* Remove the default blue outline */
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth focus effect */
+  margin-bottom: 10px; /* Add some space below the input */
+}
+
+#reject-reason:focus {
+  border-color: #28a745; /* Green border on focus */
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.3); /* Subtle green glow */
+}
+
+#reject-reason::placeholder {
+  color: #aaa; /* Light gray placeholder text */
+  font-style: italic; /* Optional to make the placeholder stand out */
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  font-weight: bold;
+  color: #1d014d;
+  font-size: 16px;
+  border-radius: 50%;
+  background-color: #ececec;
+  padding: 10px;
+}
+
+.usernametxt {
+  font-size: 20px;
+}
+
+.date-dropdown {
+  
+  padding: 8px;
+  border-radius: 10px;
+  
+}
+
+/* Search bar */
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  
+  flex-grow: 1;
+  margin-bottom: 28px;
+  width: 100%;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 50px;
+  border: 1px solid #40da9e;
+}
+.search-bar-extended {
+  width: 100%; /* Adjust width as per your need */
+  padding: 10px;
+}
+
+.sort-dropdown {
+  margin-left: 10px;
+  padding: 10px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 75%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+}
+
+.hr {
+  border: 1px solid #6a6868;
+  margin: 20px 0;
+}
+
+
+
+.but {
+  background: linear-gradient(145deg, #40da9e, #28c28c);
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.but:hover {
+  background: linear-gradient(145deg, #28c28c, #40da9e);
+  transform: translateY(-3px);
+  box-shadow: 2px 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.style {
+  display: flex;
+  align-items: center;
+}
+
+.count {
+  font-size: 18px;
+  font-weight: bold;
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 12px;
+  color: #020202;
+}
+
+/* Table Container */
+.table-container {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+}
+/* Ensure the button is properly styled and clickable */
+.view-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+  display: inline-block; /* Ensure it behaves like a button */
+  font-size: 14px;
+}
+
+.view-button:hover {
+  background-color: #45a049;
+  text-decoration: none;
+}
+
+/* Prevent button from being overridden by other styles */
+.view-button:focus {
+  outline: none;
+}
+
+/* Table Styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+}
+
+th {
+  background-color: #2a9d8f;
+  color: white;
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+tr:hover {
+  background-color: #e1f7f4;
+}
+
+/* Button styles with colors */
+.status-button {
+  background-color: #ffcc00; /* Yellow background */
+  color: white;
+  padding: 6px 10px;
+  font-size: 12px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.status-button:hover {
+  background-color: #e5b900; /* Darker yellow on hover */
+}
+
+/* Button styles for Accept, Reject, and Request Specification */
+.accept-button {
+  background-color: #32cd32; /* Lime green for Accept */
+  color: white;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 10px; /* Add space between buttons */
+  transition: background-color 0.3s ease;
+}
+
+.accept-button:hover {
+  background-color: #28a428; /* Darker green on hover */
+}
+
+.reject-button {
+  background-color: #ff6347; /* Red for Reject */
+  color: white;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 10px; /* Add space between buttons */
+  transition: background-color 0.3s ease;
+}
+
+.reject-button:hover {
+  background-color: #d9523f; /* Darker red on hover */
+}
+
+.request-spec-button {
+  background-color: #1e90ff; /* Blue for Request Specification */
+  color: white;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.request-spec-button:hover {
+  background-color: #1c7ccd; /* Darker blue on hover */
+}
+
+/* Responsive adjustments for buttons */
+@media (max-width: 1024px) {
+  .accept-button, .reject-button, .request-spec-button {
+    font-size: 12px;
+    padding: 6px 10px;
+    margin-right: 8px; /* Adjust spacing for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .accept-button, .reject-button, .request-spec-button {
+    font-size: 11px;
+    padding: 5px 9px;
+    margin-right: 7px;
+  }
+}
+
+@media (max-width: 576px) {
+  .accept-button, .reject-button, .request-spec-button {
+    font-size: 10px;
+    padding: 4px 8px;
+    margin-right: 6px;
+  }
+}
+
+
+/* Responsive adjustments for buttons */
+@media (max-width: 1024px) {
+  .accept-button, .reject-button, .request-spec-button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .accept-button, .reject-button, .request-spec-button {
+    font-size: 11px;
+    padding: 5px 9px;
+  }
+}
+
+@media (max-width: 576px) {
+  .accept-button, .reject-button, .request-spec-button {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+}
+.application-button {
+  background-color: #32cd32; /* Lime green background */
+  color: white;
+  padding: 6px 9px;
+  font-size: 11px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.application-button:hover {
+  background-color: #28a428; /* Darker lime green on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .table-container {
+    padding: 15px;
+  }
+
+  th,
+  td {
+    padding: 10px 12px;
+  }
+
+  .status-button,
+  .action-button,
+  .application-button {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .table-container {
+    padding: 10px;
+  }
+
+  th,
+  td {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  .status-button,
+  .action-button,
+  .application-button {
+    padding: 6px 10px;
+  }
+
+  .table {
+    font-size: 12px;
+  }
+
+  .card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 576px) {
+  .table-container {
+    padding: 10px;
+  }
+
+  th,
+  td {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .status-button,
+  .action-button,
+  .application-button {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+
+  .table {
+    font-size: 10px;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+ 
+}

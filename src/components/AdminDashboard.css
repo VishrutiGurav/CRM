@@ -3,6 +3,7 @@
   display: flex;
   gap: 20px;
   padding: 15px;
+  max-height: 360px;
   flex-wrap: wrap;
   background: #ffffff;
   color: #030000;

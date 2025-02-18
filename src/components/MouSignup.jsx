@@ -16,6 +16,10 @@ const MouSignup = () => {
     setCardVisible(!isCardVisible);
   };
 
+  const handleReviewClick = () => {
+    navigate("/filldetails"); // Replace with your actual route
+  };
+
   const handleLogout = () => {
     localStorage.removeItem('loggedInUser');
     localStorage.removeItem('token');
@@ -70,7 +74,7 @@ const MouSignup = () => {
             </div>
           </div>
           <p className={styles.stepsDescription}>It takes just three steps</p>
-          <button className={styles.ctaButton}>Get Started</button>
+          <button className={styles.ctaButton} onClick={handleReviewClick}>Get Started</button>
         </div>
       </section>
 

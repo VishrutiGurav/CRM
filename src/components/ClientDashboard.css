@@ -1,0 +1,675 @@
+/* Global Styles */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f3f4f6;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 230px;
+  background: #000d54f5;
+  color: white;
+  height:100vh;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: transform 0.3s ease-in-out;
+  overflow-x: hidden;
+}
+.sidebar h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.sidebar nav a {
+  display: block;
+  padding: 15px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: white;
+}
+.sidebar nav a:hover {
+  background: #0a638c;
+}
+
+.sidebar.closed {
+  width: 115px; /* Smaller width when closed, you can adjust this as per requirement */
+}
+
+.sidebar.open {
+  width: 250px; /* Full width when open */
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  
+}
+
+.sidebar-header h1 {
+  display: block;
+  transition: opacity 0.3s ease-in-out;
+}
+.sidebar.closed .sidebar-header h1 {
+  opacity: 0; /* Hide the title when sidebar is closed */
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  
+}
+.toggle-btn img {
+  width: 30px; /* Make sure the size is appropriate */
+  height: 30px; 
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+/* Main Content */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease-in-out;
+  background-color: #f4f4f4;
+
+}
+
+/* Sidebar Open -> Main Content Shrinks */
+.main-content.shrink {
+  margin-left: 295px;
+  
+}
+
+/* Sidebar Closed -> Main Content Expands */
+.main-content.expand {
+  margin-left: 150px;
+}
+
+
+
+/* Top Bar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background:  #e7e9eb;
+  padding: 15px 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: margin-left 0.3s ease-in-out;
+  z-index: 1000;
+  margin-left: 20px; 
+}
+
+.topbar.shrink {
+margin-left: 270px; /* Adjust margin for space when sidebar is open */
+}
+
+.topbar.expand {
+margin-left: 100px; /* Adjust margin for space when sidebar is closed */
+}
+
+.dashboard-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin-right: 550px; /* Creates space between Dashboard and search bar */
+}
+.dashboard-title h1{
+  font-size: 25px;
+  color: #03014f;
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #d9dce1;
+  padding: 10px 10px;
+  border-radius: 25px;
+  gap: 10px;
+  width:500px;
+}
+.search-bar input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  width: 450px; /* Increase width here */
+  transition: width 0.3s ease-in-out; 
+}
+
+.search-bar input:focus {
+  width: 850px; /* Expands when focused */
+}
+
+.icon-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.icon-group svg {
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.icon-img {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: transform 0.2s ease-in-out;
+}
+
+
+.icon-img:hover {
+transform: scale(1.5); /* Slightly enlarge on hover */
+}
+
+.icon-group img {
+  width: 44px;
+  height: 30px;
+}
+
+/* Cards Section */
+.cards-container {
+  display: flex;
+  flex-direction: row;
+  transition: width 0.3s ease-in-out;
+  gap: 20px; 
+  flex-wrap: nowrap; /* Ensure wrapping na ho */
+}
+
+.graphs-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px; /* Space between graphs */
+  width: 95%;
+  margin-top: 20px;
+  margin-left: 30px;
+  flex-wrap: wrap;
+}
+.graph-card{
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  background-color:rgb(237, 230, 230);
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  flex: 1.5;
+  width: calc(50% - 20px); 
+  max-width: 900px; 
+  height: 340px;
+}
+.graph-title{
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 8px; /* Space between text and image */
+}
+
+.graph-icon, .graph-icon2{
+  width: 100%;
+  height: 300px;
+  margin-left: 0;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.card-symbol {
+  font-size: 20px;  /* Adjust symbol size */
+  display: block;
+  margin-top: 0px;
+}
+
+
+.left-single-card,
+.right-single-card {
+  width: 50%; /* Cards ko responsive banane ke liye */
+  max-width: 50%;
+  background:#f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+  margin-left: 10px; 
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.text, .text2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.left, .right {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.left .card1, 
+.left .card2, 
+.left .card3, 
+.left .card4 {
+  padding: 20px;  
+  font-size: 14px;  
+}
+
+.card1, .card2, .card3, .card4 {
+  flex: 1;
+  padding: 35px;
+  text-align: center;
+  background: #71fd94;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+/* Left Card Section */
+.left .card1 {
+  background: #f4901dc9;
+}
+
+.left .card2 {
+  background: #1972f8d2; 
+}
+
+.left .card3 {
+  background: #86ef16d8; 
+}
+
+.left .card4 {
+  background: #f74d45cf; 
+}
+
+
+/* When right sidebar is open, shrink cards */
+.cards-container.shrink {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* When right sidebar is closed, expand cards */
+.cards-container.expand {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+  background: white;
+  width: 100%;
+
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Wrapper to align both cards side by side */
+.table-wrapper {
+  display: flex;
+  justify-content: space-between; /* Creates spacing */
+  gap: 20px; /* Adjust space between Expiry and Transaction Table */
+  width: 100%;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Expiry Overview Card */
+.expiry-card {
+  width: 40%; /* Adjust width */
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Title Styling */
+.expiry-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Line Separator */
+.expiry-card hr {
+  border: 2px solid #00446b;
+  margin: 20px 0;
+}
+
+/* Expiry Table Styling */
+.expiry-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+}
+
+
+.expiry-table td, .expiry-table td{
+  padding: 8px;
+  border: 1px solid #ddd;  /* Black border for cells */
+  text-align: center;
+  font-size: 18px;
+  border-radius: 8px;
+}
+
+
+.expiry-table th {
+  background: rgb(219, 212, 212);
+  border: 1px solid  #ddd;
+  font-weight: bold;
+}
+ 
+  .followup-btn {
+    background-color: #0464cc; /* Blue color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto; /* Center align */
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.followup-btn:hover {
+    background-color: #16ba47; /* Darker blue on hover */
+}
+
+/* Transaction Table */
+.transaction-card {
+  width: 80%; /* Adjust width to match layout */
+  background:#f8f9fa;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-card table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid black; /* Ensuring black border */
+}
+.transaction-card h3{
+  font-size: 22px;
+}
+
+/* Adjust table responsiveness when sidebar is toggled */
+.main-content.shrink .transaction-card {
+  width: 55%; /* Reduce width when sidebar is open */
+}
+
+.main-content.expand .transaction-card {
+  width: 65%; /* Normal width when sidebar is closed */
+}
+.graph-card, .admin-mou-card {
+  width: 50%; /* Adjust width to fit side by side */
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Admin MOUs Table Card */
+.admin-mou-card {
+  
+  max-width: 900px;
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Admin MOUs Table */
+.admin-mou-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.admin-mou-table th, .admin-mou-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.admin-mou-table th {
+  background: #d2cece;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+.admin-mou-card h3 {
+  font-size: 22px;
+}
+
+/* Sign Button */
+.sign-btn {
+  background: #098325;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.sign-btn:hover {
+  background: #214f88;
+}
+
+.applied-scheme-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  width:98%;
+}
+
+.applied-scheme-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.applied-scheme-table th,
+.applied-scheme-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.view-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Right Sidebar */
+.right-sidebar {
+  width: 250px;
+  background: rgb(220, 220, 222);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  right: 0;
+  top: 90px;
+  height:500px;
+  transition: all 0.3s ease-in-out;
+}
+/* Hide right sidebar by default */
+.right-sidebar.hidden {
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%; /* Circular Image */
+  border: 3px solid #ddd;
+  object-fit: cover;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+
+.user-name {
+  margin-top: 15px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #02011d;
+}
+
+.user-role {
+  font-size: 19px;
+  color: rgb(3, 18, 151);
+}
+
+/* Earning Section */
+.earning-section {
+  margin-top: 30px;
+  text-align: center;
+}
+.earning-title {
+margin-bottom: 20px; /* Space between title and progress bar */
+}
+.progress-container {
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+}
+
+/* Circular Progress Bar */
+.circular-progress {
+width: 100px;
+height: 100px;
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.circular-progress svg {
+width: 100px;
+height: 100px;
+}
+
+.progress-bg {
+fill: none;
+stroke: #eee;
+stroke-width: 8;
+}
+
+.progress-bar {
+fill: none;
+stroke: #07a70d; /* Progress color */
+stroke-width: 8;
+stroke-linecap: round;
+transform: rotate(-90deg);
+transform-origin: 50% 50%;
+}
+
+.progress-text {
+font-size: 16px;
+font-weight: bold;
+fill: #333;
+}
+
+.earning-amount {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #374151;
+}
+.graphs-and-table-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: all 0.3s ease-in-out;
+}
+/* Make Graphs and Table take equal width */
+.graphs-wrapper, .transaction-card {
+  flex: 1; 
+  flex-direction: row; /* Each will take equal space */
+}
+
+
+.transaction-card h3 {
+  margin-bottom: 10px;
+}
+.transaction-card hr{
+  border: 2px solid #0a1b65e4;
+  margin: 20px 0;
+}
+.transaction-card table {
+  width:100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.transaction-card th td {
+  border-radius: 10px;
+  padding: 20px;
+  text-align: left;
+  border-bottom: 1px solid;
+}
+
+.transaction-card th {
+  background: rgb(219, 212, 212);
+}
+
+button {
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  border-radius: 5px;
+  gap:8px;
+}
+
+.view {
+  background: rgb(5, 154, 27);
+  color: white;
+  padding: 9px 8px;
+
+}
+
+
+@media (max-width: 768px) {
+  .graphs-and-table-container {
+    flex-direction: column; /* Stack on smaller screens */
+  }
+}
