@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 const ClientDetails = require('../Models/ClientDetails');
@@ -22,6 +23,7 @@ router.post('/sendOTP', async (req, res) => {
 
     const otp = Math.floor(100000 + Math.random() * 900000);
     otpStore[email] = otp; // Store OTP temporarily
+
 
     const mailOptions = {
         from: process.env.EMAIL_USER,
@@ -186,6 +188,25 @@ router.get("/count", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+//
+router.get("/client/getDetails", async (req, res) => {
+  const email = req.query.email; // 🔹 Query se email le rahe hain
+  if (!email) {
+      return res.status(400).json({ message: "Email parameter is required" });
+  }
+
+  try {
+      const client = await ClientModel.findOne({ "personalDetails.email": email }); // 🔹 Filter by email
+      if (!client) {
+          return res.status(404).json({ message: "Client not found" });
+      }
+      res.json(client);
+  } catch (error) {
+      res.status(500).json({ message: "Server error", error });
+  }
+});
+
 
 
 

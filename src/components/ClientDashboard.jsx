@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+
+//import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";  // Import axios for API calls
 
 import lang from "../assets/lang.png";
 import bell from "../assets/bell.png";
@@ -14,6 +17,43 @@ import "./ClientDashboard.css";
 const Dashboard = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(false);
+      const [clients, setClientData] = useState([]);
+      const userEmail = localStorage.getItem('userEmail'); // 🔹 Login केलेल्या client चा email
+      //console.log("User Email from LocalStorage:", userEmail);
+      useEffect(() => {
+        fetch("http://localhost:8080/client/getDetails?email=${userEmail}")
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("User Email:", userEmail?.toLowerCase().trim());
+              console.log("Emails in Data:", data.map(client => client.personalDetails?.email?.toLowerCase().trim()));
+          
+              const filteredClient = data.filter(client => 
+                  client.personalDetails?.email?.toLowerCase().trim() === userEmail?.toLowerCase().trim()
+              );
+          
+              console.log("Filtered Client Data:", filteredClient);
+                setClientData(filteredClient);
+            })
+            .catch((error) => console.error("Error fetching data:", error));
+    }, []);
+    
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedClient, setSelectedClient] = useState(null);
+    
+    // Function to handle modal open
+    const openModal = (client) => {
+      setSelectedClient(client);
+      setIsModalOpen(true);
+    };
+    
+    // Function to handle modal close
+    const closeModal = () => {
+      setIsModalOpen(false);
+      setSelectedClient(null);
+    };
+    
+
 
     const cardsData = [
       { title: "IN PROGRESS  2", symbol: "🔄" },  // Refresh symbol
@@ -58,9 +98,8 @@ const Dashboard = () => {
           <a href="#">Logout</a>
         </nav>
       </aside>
-
-      {/* Main Content */}
-      <div className={`main-content ${isSidebarOpen ? "shrink" : "expand"}`}>
+{/* Main Content */}
+ <div className={`main-content ${isSidebarOpen ? "shrink" : "expand"}`}>
 
         {/* Top Bar */}
         <div className="topbar">
@@ -260,23 +299,37 @@ const Dashboard = () => {
         <table className="applied-scheme-table">
             <thead>
                 <tr>
-                    <th>Application ID</th>
-                    <th>Application Name</th>
+                    <th>Application firstName</th>
+                    <th>Application LastName</th>
                     <th>Application Mail</th>
+                    <th>Institute Details</th>
                     <th>Business Details</th>
                     <th>Status</th>
                     <th>View Form</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>#APP1001</td>
-                    <td>Startup Growth Fund</td>
-                    <td>user@email.com</td>
-                    <td>Tech-based startup</td>
-                    <td>Approved</td>
-                    <td><button className="view-btn">View</button></td>
+            {clients.length > 0 ? (
+                clients.map((client, index) => (
+                <tr key={index}>
+                    <td>{client.personalDetails?.firstname || "N/A"}</td>
+                    <td>{client.personalDetails?.lastname || "N/A"}</td>
+                    <td>{client.personalDetails?.email || "N/A"}</td>
+                    <td>{client.instituteDetails?.instituteName || "N/A"}</td>
+                    <td>{client.interestDetails?.businessType || "N/A"}</td>
+                    <td>{client.interestDetails?.purpose || "N/A"}</td>
+                    <td><button 
+                          className="view-btn" onClick={() => openModal(client)} // Open the modal on click
+                        >View
+                        </button>
+                    </td>
                 </tr>
+                ))
+            ) : (
+                <tr>
+                    <td colSpan="6">No applied schemes found</td>
+                </tr>
+            )}
             </tbody>
         </table>
     </div>
@@ -304,9 +357,57 @@ const Dashboard = () => {
         </div>
       </aside>
       )}
-     </div>
+
+        {/* Modal for Viewing Client Details */}
+{isModalOpen && selectedClient && (
+  <div className="modal-overlay">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h2>Client Details</h2>
+        <button className="close-btn" onClick={closeModal}>X</button>
+      </div>
+      <div className="modal-body">
+        {/* Personal Details */}
+        <h3 className="section-heading">Personal Details</h3>
+        <p><strong>First Name:</strong> {selectedClient.personalDetails?.firstname || "N/A"}</p>
+        <p><strong>Last Name:</strong> {selectedClient.personalDetails?.lastname || "N/A"}</p>
+        <p><strong>Email:</strong> {selectedClient.personalDetails?.email || "N/A"}</p>
+        <p><strong>Contact:</strong> {selectedClient.personalDetails?.contact || "N/A"}</p>
+        <p><strong>Role:</strong> {selectedClient.personalDetails?.role || "N/A"}</p>
+        <hr />
+
+        {/* Institute Details */}
+        <h3 className="section-heading">Institute Details</h3>
+        <p><strong>Department Name:</strong> {selectedClient.instituteDetails?.departmentName || "N/A"}</p>
+        <p><strong>Institute Name:</strong> {selectedClient.instituteDetails?.instituteName || "N/A"}</p>
+        <p><strong>Institute Address:</strong> {selectedClient.instituteDetails?.instituteAddress || "N/A"}</p>
+        <p><strong>Pincode:</strong> {selectedClient.instituteDetails?.pincode || "N/A"}</p>
+        <hr />
+
+        {/* Interest/Business Details */}
+        <h3 className="section-heading">Interest/Business Details</h3>
+        <p><strong>Business Type:</strong> {selectedClient.interestDetails?.businessType || "N/A"}</p>
+        <p><strong>Purpose:</strong> {selectedClient.interestDetails?.purpose || "N/A"}</p>
+        <p><strong>Scope:</strong> {selectedClient.interestDetails?.scope || "N/A"}</p>
+        <p><strong>Start Date:</strong> {selectedClient.interestDetails?.startDate ? new Date(selectedClient.interestDetails.startDate).toLocaleDateString() : "N/A"}</p>
+        <p><strong>Duration:</strong> {selectedClient.interestDetails?.duration || "N/A"}</p>
+        <p><strong>Budget:</strong> {selectedClient.interestDetails?.budget || "N/A"}</p>
+        <p><strong>Communication Mode:</strong> {selectedClient.interestDetails?.communicationMode || "N/A"}</p>
+        <p><strong>Custom Purpose:</strong> {selectedClient.interestDetails?.customPurpose || "N/A"}</p>
+        <hr />
+      </div>
+      <div className="modal-footer">
+        <button onClick={closeModal}>Close</button>
+      </div>
+    </div>
+  </div>
+)}
+
+
+   </div>
     
   );
 };
 
 export default Dashboard;
+
