@@ -13,6 +13,7 @@ import SuccessPage from "./components/SuccessPage";
 import AdminDashboard from "./components/AdminDashboard";
 import ClientDashboard from "./components/ClientDashboard";
 import Review from "./components/Review";
+import MouDocument from "./components/MouDocument";
 
 
 
@@ -33,6 +34,7 @@ function App() {
               <Route path="/admindashboard" element={<AdminDashboard/>}/>
               <Route path="/ClientDashboard" element={<ClientDashboard/>} />
               <Route path="/Review" element={<Review/>} />
+              <Route path="/MouDocument" element={<MouDocument/>} />
               {/*<Route element={<Layout isOpen={isOpen} setIsOpen={setIsOpen} />}>*/}
           </Routes>
         </Router>

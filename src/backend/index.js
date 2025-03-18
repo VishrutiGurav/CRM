@@ -7,7 +7,8 @@ const ClientDetailsRouter = require("./Routes/ClientRouter");
 const http = require("http");
 const { Server } = require("socket.io");
 const mongoose = require("mongoose");
-const ClientDetails = require("./Models/ClientDetails"); // Import model
+const ClientDetails = require("./Models/ClientDetails");
+const MouRouter = require("./Routes/MouRouter"); // Import MoU Routes // Import model
 
 require("dotenv").config();
 require("./Models/db");
@@ -27,6 +28,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use("/auth", AuthRouter);
 app.use("/client", ClientDetailsRouter);
+app.use("/api", MouRouter); 
 
 // Health check route
 app.get("/ping", (req, res) => {

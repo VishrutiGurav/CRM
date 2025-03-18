@@ -1,0 +1,140 @@
+.mou-container {
+  max-width: 1300px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: "Arial", sans-serif;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+}
+
+.mou-header {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.mou-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px; /* Proper spacing between cards */
+}
+.mou-card {
+  display: flex;
+  align-items: flex-start;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+  border-left: 6px solid #40DA9E;
+  position: relative;
+  margin-bottom: 20px; /* Adds space below each section */
+  padding: 15px; /* Adds inner spacing for better readability */
+  border-radius: 8px; /* Optional: Rounds the corners for better UI */
+  background: #fff; /* Ensures a distinct look */
+
+}
+
+.mou-card:hover {
+  transform: scale(1.02);
+}
+
+.section-number {
+  font-size: 22px;
+  font-weight: bold;
+  color: #40DA9E;
+  margin-right: 15px;
+}
+
+.section-content {
+  flex: 1;
+}
+
+.section-heading {
+  font-size: 20px;
+  font-weight: bold;
+  color: #15092D;
+  margin-bottom: 8px;
+}
+
+.section-text,
+.clause-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: black;
+  white-space: pre-line;
+  text-align: left; /* Ensures text aligns from the left */
+  display: block; /* Makes sure text behaves like a paragraph */
+}
+
+.input-field {
+  border: none;
+  border-bottom: 2px solid #40DA9E;
+  font-size: 16px;
+  padding: 5px;
+  width: auto;
+  margin: 0 5px;
+  outline: none;
+  background: transparent;
+}
+
+.input-field:focus {
+  border-bottom: 2px solid #15092D;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.reason-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reason-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.reason-toggle {
+  background: #40DA9E;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: fit-content;
+  font-size: 14px;
+}
+
+.reason-short {
+  width: 50%;
+  padding: 8px;
+  border: 2px solid #40DA9E;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.expand-icon {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.reason-input {
+  width: 100%;
+  min-height: 60px;
+  padding: 10px;
+  border: 2px solid #40DA9E;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #f9f9f9;
+  margin-top: 10px;
+  display: block;
+}

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Layout from "./Layout";
-import styles from "./Sidebar.module.css";
 import account from "../assets/account.png";
 import search from "../assets/search.png";
 import axios from 'axios';
@@ -8,14 +7,14 @@ import "./Review.css";
 
 const Application2 = ({ isOpen }) => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [tableData, setTableData] = useState([]); // MoU application data
-    const [sortOrder, setSortOrder] = useState('newest'); // State for sorting (Newest, Oldest, Ascending, Descending)
-    const [selectedMou, setSelectedMou] = useState(null); // State for selected MoU for viewing modal
-    const [acceptModal, setAcceptModal] = useState(false); // State for Accept confirmation modal
-    const [rejectModal, setRejectModal] = useState(false); // State for Reject reason modal
-    const [rejectReason, setRejectReason] = useState(''); // State for rejection reason
-    const [showModal, setShowModal] = useState(false); // State to control modal visibility
-    const [errorMessage, setErrorMessage] = useState(''); // State to display error for empty rejection reason
+    const [tableData, setTableData] = useState([]); 
+    const [sortOrder, setSortOrder] = useState('newest'); 
+    const [selectedMou, setSelectedMou] = useState(null); 
+    const [acceptModal, setAcceptModal] = useState(false); 
+    const [rejectModal, setRejectModal] = useState(false); 
+    const [rejectReason, setRejectReason] = useState('');
+    const [showModal, setShowModal] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(''); 
     const [acceptMessage, setAcceptMessage] = useState("");
    
 
