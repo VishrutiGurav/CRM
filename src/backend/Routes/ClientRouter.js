@@ -4,6 +4,14 @@ const router = express.Router();
 const ClientDetails = require('../Models/ClientDetails');
 const nodemailer = require('nodemailer');
 require('dotenv').config(); // Load environment variables
+const authMiddleware = require("../Middlewares/AuthMiddleware");
+const User = require("../models/User");
+
+
+router.get('/protected-route', authMiddleware, (req, res) => {
+    res.json({ message: "You have accessed a protected route", success: true });
+});
+
 
 const otpStore = {}; // Temporary storage for OTPs (Use Redis in production)
 
@@ -62,19 +70,25 @@ router.post('/verifyOTP', (req, res) => {
 
 router.post('/saveDetails', async (req, res) => {
   try {
-    console.log("Received request body:", req.body); // Check incoming data
+    console.log("Received request body:", req.body); // Debugging incoming data
 
-    const { personalDetails, instituteDetails, interestDetails } = req.body;
+    const { userId, personalDetails, instituteDetails, interestDetails } = req.body;
 
     // Ensure all required fields are present
-    if (!personalDetails || !instituteDetails || !interestDetails) {
-      console.log("Missing required fields:", { personalDetails, instituteDetails, interestDetails });
+    if (!userId || !personalDetails || !instituteDetails || !interestDetails) {
+      console.log("Missing required fields:", { userId, personalDetails, instituteDetails, interestDetails });
       return res.status(400).json({ error: "Missing required fields" });
     }
 
-    const newDetails = new ClientDetails({ personalDetails, instituteDetails, interestDetails });
+    // Create new ClientDetails entry with userId
+    const newDetails = new ClientDetails({ 
+      userId, // Store ObjectId of logged-in user
+      personalDetails, 
+      instituteDetails, 
+      interestDetails 
+    });
 
-    console.log("Saving data to database:", newDetails); // Check what is being saved
+    console.log("Saving data to database:", newDetails); // Debugging saved data
 
     await newDetails.save();
     console.log("Data saved successfully!"); // Confirm successful save
@@ -204,6 +218,55 @@ router.get("/client/getDetails", async (req, res) => {
       res.json(client);
   } catch (error) {
       res.status(500).json({ message: "Server error", error });
+  }
+});
+
+// Get user ObjectId using first name and last name
+router.get("/getUserId", async (req, res) => {
+  try {
+    const { firstName, lastName } = req.query;
+
+    if (!firstName || !lastName) {
+      return res.status(400).json({ error: "First name and last name are required." });
+    }
+
+    const user = await User.findOne({ firstName, lastName });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.json({ userId: user._id });
+  } catch (error) {
+    console.error("Error fetching user ID:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+router.post("/saveMouData", async (req, res) => {
+  try {
+      const { userId, mouData, formData } = req.body;
+
+      if (!userId) {
+          return res.status(400).json({ message: "User ID is required" });
+      }
+
+      // Find the existing client details document
+      const clientDetails = await ClientDetails.findOne({ userId });
+
+      if (!clientDetails) {
+          return res.status(404).json({ message: "Client details not found" });
+      }
+
+      // Update only MoU details while keeping other fields untouched
+      clientDetails.mouDetails = { mouData, formData };
+
+      await clientDetails.save();
+
+      res.status(200).json({ message: "MoU data saved successfully!" });
+  } catch (error) {
+      console.error("Error saving MoU data:", error);
+      res.status(500).json({ message: "Internal Server Error" });
   }
 });
 

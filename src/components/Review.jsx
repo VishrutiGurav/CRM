@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Layout from "./Layout";
-import account from "../assets/account.png";
-import search from "../assets/search.png";
 import axios from 'axios';
 import "./Review.css";
 

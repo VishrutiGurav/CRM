@@ -31,42 +31,12 @@ const handleReviewClick1 = () => {
   const [totalRequests, setTotalRequests] = useState(0); // Stores the client count
 
   useEffect(() => {
-    const socket = io("http://localhost:8080");
-  
-    const fetchClientCount = async () => {
-      try {
-        const response = await axios.get("http://localhost:8080/client/count");
-        setTotalRequests(response.data.totalRequests);
-        console.log("🔹 Fetched total requests:", response.data.totalRequests);
-      } catch (error) {
-        console.error("❌ Error fetching client count:", error);
-      }
-    };
-  
-    fetchClientCount(); // Fetch count on component mount
-  
-    socket.on("connect", () => {
-      console.log("✅ Connected to Socket.io server", socket.id);
-    });
-  
-    socket.on("newClientRequest", async () => {
-      console.log("🚀 New client request received!");
-      setNewRequest(true); // Show blinking dot
-      console.log("🔴 Blinking dot state updated:", true);
-      await fetchClientCount(); // Fetch updated count
-    });
-  
-    socket.on("disconnect", () => {
-      console.log("❌ Disconnected from server");
-    });
-  
-    return () => {
-      socket.disconnect();
-      console.log("⚠️ Socket disconnected");
-    };
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login"); // Redirect to login if no token
+    }
   }, []);
   
-
   const handleReviewClick = () => {
     setNewRequest(false); // Remove blinking dot
   };

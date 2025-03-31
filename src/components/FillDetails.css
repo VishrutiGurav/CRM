@@ -15,50 +15,71 @@ body {
     
   }
   
-  /* Navbar Styling */
-  .navbar {
-    width: 100%;
-    background-color:#15092D;
-    color: white;
-    padding: 10px 20px;
+  .header {
     display: flex;
+    max-width: 1000%;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #15092D; /* Dark blue-gray */
+    padding: 10px 20px;
+    color: white;
+    position: relative;
   }
   
-  .navbar-header {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar-logo {
-    height: 40px;
-    margin-left: 30px;
-  }
-  
-  .navbar-user {
-    display: flex;
-    align-items: center;
-    margin-left: 1540px;
-  }
-  
-  .profile-icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #004085;
-    margin-right: 5px;
-    font-size: 14px;
+  .logo {
+    height: 50px;
   }
   
   .user-name {
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: 20px;
     color: #40DA9E;
+  }
+  
+  .profile-icon {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .icon-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .icon-image:hover {
+    transform: scale(1.1);
+  }
+  
+  .logout-card {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .logout-button {
+    background-color: #e74c3c; /* Red */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .logout-button:hover {
+    background-color: #c0392b;
   }
   
   /* Content Styling */

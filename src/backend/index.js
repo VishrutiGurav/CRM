@@ -23,9 +23,34 @@ const io = new Server(server, {
   },
 });
 
+const allowedOrigins = ["http://localhost:3000"]; 
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true, // ✅ Allow credentials (cookies, headers)
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
+
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
+
+// ✅ CORS FIX: Allow frontend (http://localhost:3000) to communicate with the backend
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // Allow frontend
+  res.header("Access-Control-Allow-Credentials", "true"); // Allow credentials (cookies, tokens)
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  
+  // Handle CORS Preflight Requests
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(204); // No Content
+  }
+
+  next();
+});
 app.use("/auth", AuthRouter);
 app.use("/client", ClientDetailsRouter);
 app.use("/api", MouRouter); 

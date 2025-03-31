@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const clientDetailsSchema = new Schema({
+  userId: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "users",  // Reference to the users collection
+    required: true 
+  },
   personalDetails: {
     firstname: { type: String, required: true },
     lastname: { type: String, required: true },
@@ -24,8 +29,18 @@ const clientDetailsSchema = new Schema({
     budget: { type: String, required: true },
     communicationMode: { type: String, required: true },
     customPurpose: { type: String },
+  },
+
+  // New field for storing MoU Data
+  mouDetails: {
+    mouData: { type: Array, default: [] },  // Stores fetched MoU content
+    formData: { type: Object, default: {} }, // Stores user-inputted data
   }
 });
+
+
+
+
 
 
 const ClientDetails = mongoose.model('ClientDetails', clientDetailsSchema);

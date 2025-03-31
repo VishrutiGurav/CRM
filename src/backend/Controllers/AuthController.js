@@ -96,7 +96,7 @@ const adminLogin = async (req, res) => {
             return res.status(403).json({ message: errorMsg, success: false });
         }
 
-        // Compare the provided password with the hashed password
+        // Compare passwords
         const isPassEqual = await bcrypt.compare(password, admin.password);
         console.log('Password comparison result:', isPassEqual);
 
@@ -105,22 +105,30 @@ const adminLogin = async (req, res) => {
             return res.status(403).json({ message: errorMsg, success: false });
         }
 
-        // Generate JWT token if authentication is successful
+        // ✅ Generate JWT Token (Includes role & id)
         const jwtToken = jwt.sign(
-            { email: admin.email },
+            { id: admin._id, email: admin.email, role: "admin" },
             process.env.JWT_SECRET,
             { expiresIn: '24h' }
         );
 
         console.log("Admin authenticated successfully, JWT Token generated:", jwtToken);
 
-        // Send successful response
+        // ✅ Send token as an HTTP-only cookie (More Secure)
+        res.cookie("token", jwtToken, {
+            httpOnly: true,  // Prevents access from JavaScript
+            secure: process.env.NODE_ENV === "production", // Use secure cookies in production
+            sameSite: "strict",
+            maxAge: 24 * 60 * 60 * 1000 // 1 day
+        });
+
+        // ✅ Send response (excluding token from body for security)
         return res.status(200).json({
             message: "Admin Login Success",
             success: true,
-            jwtToken,
             email: admin.email
         });
+
     } catch (err) {
         console.error('Error:', err);
         return res.status(500).json({

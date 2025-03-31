@@ -3,9 +3,12 @@ import axios from "axios";
 import "./FillDetails2.css";
 import logo from '../assets/logo.jpg';
 import profile from '../assets/account.png';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
+import Cookies from "js-cookie";
+import accountIcon from "../assets/account.png"; // Import useNavigate
 
 function FillDetails2() {
+   const [isCardVisible, setIsCardVisible] = useState(false);
   const [formData, setFormData] = useState({
     instituteName: "",
     departmentName: "",
@@ -18,14 +21,56 @@ function FillDetails2() {
   const [message, setMessage] = useState(""); // To show success/error messages
   const navigate = useNavigate(); // Initialize useNavigate hook
 
-  // Handle input change
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+    const [loggedInUser, setLoggedInUser] = useState(null);
+    const [userName, setUserName] = useState("Guest");
+  
+  
+  
+    useEffect(() => {
+      const storedUser = localStorage.getItem("loggedInUser");
+      if (storedUser && storedUser !== "undefined") {
+        try {
+          const parsedUser = JSON.parse(storedUser);
+          console.log("Parsed User:", parsedUser);
+    
+          setLoggedInUser(parsedUser);
+    
+          // Ensure names are not null/undefined
+          const fullName = `${parsedUser?.firstName ?? ""} ${parsedUser?.lastName ?? ""}`.trim();
+          if (fullName) {
+            setUserName(fullName);
+          }
+    
+          console.log("Updated userName:", fullName);
+        } catch (error) {
+          console.error("Error parsing logged-in user data:", error);
+        }
+      }
+    }, []);
+    
+  
+  
+    const handleLogout = () => {
+      Cookies.remove("token");
+      localStorage.removeItem("loggedInUser");
+      setLoggedInUser(null);
+      navigate("/");
+    };
+  
+  
+  
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+          ...prev,
+          [name]: value,
+        }));
+      };
+      const toggleCardVisibility = () => {
+        setIsCardVisible((prev) => !prev);
+      };
+
+ 
 
 
 
@@ -78,15 +123,26 @@ function FillDetails2() {
 
   return (
     <div className="fill-details2-container">
-      <nav className="navbar">
-        <div className="navbar-header">
-          <img src={logo} alt="Logo" className="navbar-logo" />
-          <div className="navbar-user">
-            <span className="user-name">John Doe</span>
-            <div className="profile-icon"><img src={profile} alt="" /></div>
-          </div>
-        </div>
-      </nav>
+      <header className="header">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/cf5fbaedaa52b356cea389b0d186d4d4d080b453a3e3571251ede55dc47d4fc9"
+                alt="Company logo"
+                className="logo"
+              />
+              <span className="user-name">{userName}</span>
+
+      
+              <div className="profile-icon" onClick={toggleCardVisibility}>
+                <img loading="lazy" src={accountIcon} alt="Profile" className="icon-image" />
+              </div>
+      
+              {isCardVisible && (
+                <div className="logout-card">
+                  <button onClick={handleLogout} className="logout-button">Logout</button>
+                </div>
+              )}
+            </header>
 
       <div className="content">
         <h1 className="main-heading">Fill the Institute Details</h1>

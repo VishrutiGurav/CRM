@@ -14,6 +14,8 @@ import AdminDashboard from "./components/AdminDashboard";
 import ClientDashboard from "./components/ClientDashboard";
 import Review from "./components/Review";
 import MouDocument from "./components/MouDocument";
+import MouList from "./components/MouList";
+import MouReviewAdmin from "./components/MouReviewAdmin";
 
 
 
@@ -35,6 +37,8 @@ function App() {
               <Route path="/ClientDashboard" element={<ClientDashboard/>} />
               <Route path="/Review" element={<Review/>} />
               <Route path="/MouDocument" element={<MouDocument/>} />
+              <Route path="/MouList" element={<MouList/>} />
+              <Route path="/MouReviewAdmin" element={<MouReviewAdmin/>} />
               {/*<Route element={<Layout isOpen={isOpen} setIsOpen={setIsOpen} />}>*/}
           </Routes>
         </Router>

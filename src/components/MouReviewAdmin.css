@@ -1,0 +1,231 @@
+.header-container {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 20px;
+    color: #15092D;
+}
+
+.underline {
+    width: 90%;
+    height: 5px;
+    background: linear-gradient(to right, #0cbf89, #0cbf895e, white);
+    margin-top: 4px;
+    margin-left: 10px;
+    border-radius: 3px;
+}
+
+.card-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+/* Container for the cards */
+.card-container {
+    display: flex;
+    gap: 1px; /* Optional gap between cards */
+    width: 100%;
+    padding: 0 20px; /* Optional padding around the container */
+}
+
+/* Style for each card */
+.client-card, .notes-card {
+    padding: 40px; /* Increase padding for spacing */
+    border-radius: 12px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    border-left: 8px solid #15092D;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* To ensure content is spaced out nicely */
+}
+
+.client-card:hover, .notes-card:hover {
+    transform: scale(1.05); /* Slightly increase scale on hover */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Adjusting width of client-card and notes-card separately */
+.client-card {
+    width: 40%; /* Keeping client card smaller */
+}
+
+.notes-card {
+    width: 550%; /* Increasing the width of notes-card */
+}
+
+
+.client-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar-icon {
+    font-size: 70px;
+    color: #15092D;
+}
+
+.card-heading {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #15092D;
+}
+
+.client-details {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 1.1rem;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.detail-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.detail-value {
+    color: #555;
+}
+
+.notes-textarea {
+    width: 95%;
+    height: 120px;
+    margin-top: 15px;
+    padding: 12px;
+    border: 2px solid #15092D;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    resize: none;
+}
+
+.button-container {
+    display: flex;
+    
+    gap: 15px;
+    width: 95%;
+    margin-top: 15px;
+}
+
+.save-button, .clear-button {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.save-button {
+    background-color: #19c893;
+    color: white;
+}
+
+.clear-button {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.save-button:hover {
+    background-color: #0a9e73;
+    transform: scale(1.05);
+}
+
+.clear-button:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+
+/* Action Panel */
+.action-panel {
+    width: 90%;
+    margin: 40px auto 20px;
+    margin-left: 25px;
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 8px solid #15092D;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+    background: white;
+    text-align: center;
+}
+
+.panel-heading {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #15092D;
+    text-align: left;
+
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: left;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Buttons inside the action panel */
+.approve-button, .reject-button, .request-button, .draft-button, .review-button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.approve-button {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.reject-button {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.request-button {
+    background-color: #f1c40f;
+    color: black;
+}
+
+.draft-button {
+    background-color: #3498db;
+    color: white;
+}
+
+.review-button {
+    background-color: #8e44ad;
+    color: white;
+}
+
+.approve-button:hover, .reject-button:hover, .request-button:hover, .draft-button:hover, .review-button:hover {
+    transform: scale(1.05);
+}
+
+  
+  
+
+   
+  
+  

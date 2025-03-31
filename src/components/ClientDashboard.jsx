@@ -18,7 +18,7 @@ const Dashboard = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(false);
       const [clients, setClientData] = useState([]);
-      const userEmail = localStorage.getItem('userEmail'); // 🔹 Login केलेल्या client चा email
+      const userEmail = localStorage.getItem('userEmail'); 
       //console.log("User Email from LocalStorage:", userEmail);
       useEffect(() => {
         fetch("http://localhost:8080/client/getDetails?email=${userEmail}")

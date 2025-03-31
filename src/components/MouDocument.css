@@ -1,3 +1,69 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #15092D; /* Dark blue-gray */
+  padding: 10px 20px;
+  color: white;
+  position: relative;
+}
+
+.logo {
+  height: 50px;
+}
+
+.user-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: 20px;
+  color: #40DA9E;
+}
+
+.profile-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.icon-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid white;
+  transition: transform 0.3s ease-in-out;
+}
+
+.icon-image:hover {
+  transform: scale(1.1);
+}
+
+.logout-card {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.logout-button {
+  background-color: #e74c3c; /* Red */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 3px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.logout-button:hover {
+  background-color: #c0392b;
+}
+
 .mou-container {
   max-width: 1300px;
   margin: 40px auto;
@@ -20,6 +86,7 @@
   flex-direction: column;
   gap: 14px; /* Proper spacing between cards */
 }
+
 .mou-card {
   display: flex;
   align-items: flex-start;
@@ -27,7 +94,7 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
-  border-left: 6px solid #40DA9E;
+  border-left: 11px solid #40DA9E;
   position: relative;
   margin-bottom: 20px; /* Adds space below each section */
   padding: 15px; /* Adds inner spacing for better readability */
@@ -138,3 +205,25 @@
   margin-top: 10px;
   display: block;
 }
+
+.submit-button {
+  background: linear-gradient(135deg, #15092D, #0b0b0b);
+  color: white;
+  font-size: 18px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.submit-button:hover {
+  background: linear-gradient(135deg, #10b53c, #9ef86e);
+  transform: scale(1.05);
+}
+

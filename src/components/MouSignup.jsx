@@ -1,59 +1,77 @@
-import React, { useState } from 'react';
-import { StepIndicator } from './StepIndicator';
-import styles from './MouSignup.module.css';
-import accountIcon from '../assets/account.png';
-import { useNavigate } from 'react-router-dom';
-import { handleError, handleSuccess } from '../util';
-import { ToastContainer } from 'react-toastify';
+import React, { useState, useEffect } from "react";
+import { StepIndicator } from "./StepIndicator";
+import styles from "./MouSignup.module.css";
+import accountIcon from "../assets/account.png";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import Cookies from "js-cookie";
 
 const MouSignup = () => {
   const steps = [1, 2, 3];
-  const loggedInUser = localStorage.getItem('loggedInUser') || 'User';
-  const [isCardVisible, setCardVisible] = useState(false); // State to manage card visibility
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // ✅ Corrected useNavigate usage
 
-  const toggleCardVisibility = () => {
-    setCardVisible(!isCardVisible);
+  const [isCardVisible, setIsCardVisible] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [userName, setUserName] = useState("Guest");
+
+
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("loggedInUser");
+    if (storedUser && storedUser !== "undefined") {
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        console.log("Parsed User:", parsedUser);
+  
+        setLoggedInUser(parsedUser);
+  
+        // Ensure names are not null/undefined
+        const fullName = `${parsedUser?.firstName ?? ""} ${parsedUser?.lastName ?? ""}`.trim();
+        if (fullName) {
+          setUserName(fullName);
+        }
+  
+        console.log("Updated userName:", fullName);
+      } catch (error) {
+        console.error("Error parsing logged-in user data:", error);
+      }
+    }
+  }, []);
+  
+
+
+  const handleLogout = () => {
+    Cookies.remove("token");
+    localStorage.removeItem("loggedInUser");
+    setLoggedInUser(null);
+    navigate("/");
   };
 
   const handleReviewClick = () => {
-    navigate("/filldetails"); // Replace with your actual route
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem('loggedInUser');
-    localStorage.removeItem('token');
-    handleSuccess('Logged out successfully!');
-    navigate('/'); // Redirect to login page
-  };
-  console.log("MouSignup component rendered.");
+    navigate("/filldetails");
+  };  
+  
 
 
   return (
     <main className={styles.signupContainer}>
       <header className={styles.header}>
-        <img 
-          loading="lazy" 
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/cf5fbaedaa52b356cea389b0d186d4d4d080b453a3e3571251ede55dc47d4fc9?placeholderIfAbsent=true&apiKey=fcbc2de5becc4a58bcd7bfbeb8205e32" 
-          alt="Company logo" 
-          className={styles.logo} 
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/cf5fbaedaa52b356cea389b0d186d4d4d080b453a3e3571251ede55dc47d4fc9?placeholderIfAbsent=true&apiKey=fcbc2de5becc4a58bcd7bfbeb8205e32"
+          alt="Company logo"
+          className={styles.logo}
         />
-        <span className={styles.userName}>{loggedInUser}</span>
-
-        {/* Circular icon next to the user name */}
-        <div className={styles.profileIcon} onClick={toggleCardVisibility}>
-          <img 
-            loading="lazy"
-            src={accountIcon}
-            alt=""
-            className={styles.iconImage}
-          />
+       <span className="user-name">{userName}</span>
+        <div className={styles.profileIcon} onClick={() => setIsCardVisible(!isCardVisible)}>
+          <img loading="lazy" src={accountIcon} alt="" className={styles.iconImage} />
         </div>
 
-        {/* Logout Card */}
         {isCardVisible && (
           <div className={styles.logoutCard}>
-            <button onClick={handleLogout} className={styles.logoutButton}>Logout</button>
+            <button onClick={handleLogout} className={styles.logoutButton}>
+              Logout
+            </button>
           </div>
         )}
       </header>
@@ -66,7 +84,7 @@ const MouSignup = () => {
           </p>
           <div className={styles.stepsContainer}>
             <div className={styles.stepsGrid}>
-              {steps.map(step => (
+              {steps.map((step) => (
                 <div key={step} className={styles.stepColumn}>
                   <StepIndicator number={step} />
                 </div>
@@ -74,7 +92,9 @@ const MouSignup = () => {
             </div>
           </div>
           <p className={styles.stepsDescription}>It takes just three steps</p>
-          <button className={styles.ctaButton} onClick={handleReviewClick}>Get Started</button>
+          <button className={styles.ctaButton} onClick={handleReviewClick}>
+            Get Started
+          </button>
         </div>
       </section>
 

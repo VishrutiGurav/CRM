@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import "./FillDetails3.css";
-import logo from "../assets/logo.jpg";
-import profile from "../assets/account.png";
+import Cookies from "js-cookie";
+import accountIcon from "../assets/account.png";
 
 
 const FillDetails3 = () => {
 
   const navigate = useNavigate();
+  const [isCardVisible, setIsCardVisible] = useState(false);
   const [formData, setFormData] = useState({
     businessType: "",
     purpose: "Partnership",
@@ -31,63 +32,131 @@ const FillDetails3 = () => {
     "Other",
   ];
 
-  // Handle form input change
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  // Submit all data to backend
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const [loggedInUser, setLoggedInUser] = useState(null);
+    const [userName, setUserName] = useState("Guest");
+  
+  
+  
+    useEffect(() => {
+      const storedUser = localStorage.getItem("loggedInUser");
+      if (storedUser && storedUser !== "undefined") {
+        try {
+          const parsedUser = JSON.parse(storedUser);
+          console.log("Parsed User:", parsedUser);
     
-    const personalDetails = JSON.parse(localStorage.getItem("personalData"));
-    const instituteDetails = JSON.parse(localStorage.getItem("instituteDetails"));
-
-    if (!personalDetails || !instituteDetails) {
-      alert("Missing previous details. Please start again.");
-      navigate("/filldetails");
-      return;
-    }
-
-    const finalData = {
-      personalDetails,
-      instituteDetails,
-      interestDetails: formData,
+          setLoggedInUser(parsedUser);
+    
+          // Ensure names are not null/undefined
+          const fullName = `${parsedUser?.firstName ?? ""} ${parsedUser?.lastName ?? ""}`.trim();
+          if (fullName) {
+            setUserName(fullName);
+          }
+    
+          console.log("Updated userName:", fullName);
+        } catch (error) {
+          console.error("Error parsing logged-in user data:", error);
+        }
+      }
+    }, []);
+    
+  
+  
+    const handleLogout = () => {
+      Cookies.remove("token");
+      localStorage.removeItem("loggedInUser");
+      setLoggedInUser(null);
+      navigate("/");
+    };
+  
+    
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    };
+    const toggleCardVisibility = () => {
+      setIsCardVisible((prev) => !prev);
     };
 
-     // Debugging: Print finalData before submitting
-      console.log("Final data to be sent:", finalData);
-
-
-    try {
-      await axios.post("http://localhost:8080/client/saveDetails", finalData);
-      alert("Details submitted successfully!");
-
-      // Clear localStorage
-      localStorage.removeItem("personalData");
-      localStorage.removeItem("instituteDetails");
-
-      navigate('/success'); // Change to your success page route
-    } catch (error) {
-      alert("Error submitting details. Please try again.");
-    }
-  };
-
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+    
+      try {
+        // First, fetch the user details from the backend
+        const userNameParts = userName.split(" "); // Assuming "Vishruti Gurav"
+        const firstName = userNameParts[0];
+        const lastName = userNameParts.slice(1).join(" ");
+    
+        const userResponse = await axios.get("http://localhost:8080/client/getUserId", {
+          params: { firstName, lastName },
+        });
+    
+        const userId = userResponse.data.userId;
+    
+        if (!userId) {
+          alert("User not found. Please try again.");
+          return;
+        }
+    
+        // Get stored personal and institute details
+        const personalDetails = JSON.parse(localStorage.getItem("personalData"));
+        const instituteDetails = JSON.parse(localStorage.getItem("instituteDetails"));
+    
+        if (!personalDetails || !instituteDetails) {
+          alert("Missing details. Please start again.");
+          navigate("/filldetails");
+          return;
+        }
+    
+        // Prepare final data
+        const finalData = {
+          userId, // Attach retrieved user ObjectId
+          personalDetails,
+          instituteDetails,
+          interestDetails: formData,
+        };
+    
+        console.log("Final data to be sent:", finalData);
+    
+        // Send the data to backend
+        await axios.post("http://localhost:8080/client/saveDetails", finalData);
+        alert("Details submitted successfully!");
+    
+        // Clear localStorage
+        localStorage.removeItem("personalData");
+        localStorage.removeItem("instituteDetails");
+    
+        navigate("/success"); // Redirect to success page
+      } catch (error) {
+        console.error("Error submitting details:", error);
+        alert("Error submitting details. Please try again.");
+      }
+    };
+    
   return (
     <div className="fill-details-container">
-      {/* Navbar */}
-      <div className="navbar">
-        <div className="navbar-header">
-          <img src={logo} alt="Logo" className="navbar-logo" />
-        </div>
-        <div className="navbar-user">
-          <div className="profile-icon">
-            <img src={profile} alt="Profile" className="profile-img" />
-          </div>
-          <div className="user-name">John Doe</div>
-        </div>
-      </div>
+      <header className="header">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/cf5fbaedaa52b356cea389b0d186d4d4d080b453a3e3571251ede55dc47d4fc9"
+                alt="Company logo"
+                className="logo"
+              />
+              <span className="user-name">{userName}</span>
+
+      
+              <div className="profile-icon" onClick={toggleCardVisibility}>
+                <img loading="lazy" src={accountIcon} alt="Profile" className="icon-image" />
+              </div>
+      
+              {isCardVisible && (
+                <div className="logout-card">
+                  <button onClick={handleLogout} className="logout-button">Logout</button>
+                </div>
+              )}
+            </header>
 
       <div className="content">
         <h1 className="main-heading">Fill the details to sign a MoU with us</h1>
